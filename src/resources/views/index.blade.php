@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>mogitate</title>
 
-    <link rel="stylesheet" href="comfirm.css">
+    <link rel="stylesheet" href="{{ asset('css/index.css') }}">
 </head>
 <body>
   <header class="header">mogitate</header>
@@ -31,48 +31,15 @@
       <div class="product-list">
         @foreach ($products as $product)
         <div class="product">
-          <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="product-image">
+          <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="product-image">
           <div class="product-infomation">
             <span class="product-name">{{ $product->name }}</span>
             <span class="product-price">￥{{ number_format($product->price) }}</span>
           </div>
         </div>
-        <div class="product">
-          <img src="" alt="" class="product-image">
-          <div class="product-infomation">
-            <span class="product-name">商品2</span>
-            <span class="product-price">価格</span>
-          </div>
-        </div>
-        <div class="product">
-          <img src="" alt="" class="product-image">
-          <div class="product-infomation">
-            <span class="product-name">商品3</span>
-            <span class="product-price">価格</span>
-          </div>
-        </div>
-        <div class="product">
-          <img src="" alt="" class="product-image">
-          <div class="product-infomation">
-            <span class="product-name">商品4</span>
-            <span class="product-price">価格</span>
-          </div>
-        </div>
-        <div class="product">
-          <img src="" alt="" class="product-image">
-          <div class="product-infomation">
-            <span class="product-name">商品5</span>
-            <span class="product-price">価格</span>
-          </div>
-        </div>
-        <div class="product">
-          <img src="" alt="" class="product-image">
-          <div class="product-infomation">
-            <span class="product-name">商品6</span>
-            <span class="product-price">価格</span>
-          </div>
-        </div>
-    </div>    
+        @endforeach
+      </div>
+    </div>   
   </main>
 </body>
 </html>
