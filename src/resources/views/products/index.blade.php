@@ -24,18 +24,22 @@
         </select>
       </div>
     </div>
-    
+
+
     <div class="product-container">
       <button class="add-product">＋商品を追加</button>
       
       <div class="product-list">
         @foreach ($products as $product)
         <div class="product">
-          <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="product-image">
-          <div class="product-infomation">
-            <span class="product-name">{{ $product->name }}</span>
-            <span class="product-price">￥{{ number_format($product->price) }}</span>
-          </div>
+          <a href="{{ route('products.show', $product->id) }}">
+            <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="product-image">
+          </a>
+            <div class="product-infomation">
+              <span class="product-name">{{ $product->name }}</span>
+              <span class="product-price">￥{{ number_format($product->price) }}</span>
+            </div>
+          </a>
         </div>
         @endforeach
       </div>

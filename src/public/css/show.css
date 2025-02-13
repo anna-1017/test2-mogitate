@@ -56,33 +56,32 @@ body {
 
 .product-name,
 .product-price,
-.seaon {
+.product-season,
+.product-description {
     display: flex;
     flex-direction: column;
+
 }
 
-.season-select {
-    gap: 10px;
+
+.product-name .name-label,
+.product-price .price-label,
+.product-season .season-label,
+.product-description .description-label {
+    font-weight: bold;
 }
 
-.product-form {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
+.product-name span,
+.product-price span,
+.product-season span,
+.product-description span {
+    font-size: 16px;
 }
 
-.product-description textarea {
-    width: 50%;
-}
-
-.button-group {
-    display: flex;
-    gap: 10px;
-    width: 100%;
-}
-
-.delete-form__button {
-    text-align: right;
+.button-edit {
+    cursor: pointer;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
 }
