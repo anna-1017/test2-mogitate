@@ -14,6 +14,8 @@ use App\Http\Controllers\ProductController;
 |
 */
 
+Route::get('/products/register', [ProductController::class, 'register'])->name('products.register');
+
 // 商品一覧ページ
 Route::get('/products', [ProductController::class, 'index']);
 
@@ -25,3 +27,4 @@ Route::get('/products/{id}/update', [ProductController::class, 'update'])->name(
 
 // 商品更新処理（データベース更新用）
 Route::patch('/products/{id}/update', [ProductController::class, 'saveUpdate'])->name('products.saveUpdate');
+

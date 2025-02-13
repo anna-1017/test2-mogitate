@@ -6,6 +6,7 @@
     <title>mogitate</title>
 
     <link rel="stylesheet" href="{{ asset('css/index.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
   <header class="header">mogitate</header>
@@ -27,7 +28,7 @@
 
 
     <div class="product-container">
-      <button class="add-product">＋商品を追加</button>
+      <a href="{{ route('products.register') }}" class="add-product">＋商品を追加</a>
       
       <div class="product-list">
         @foreach ($products as $product)
@@ -42,6 +43,9 @@
           </a>
         </div>
         @endforeach
+      </div>
+      <div class="pagination">
+         {{ $products->links() }}
       </div>
     </div>   
   </main>

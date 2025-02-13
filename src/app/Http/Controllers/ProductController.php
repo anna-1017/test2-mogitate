@@ -8,10 +8,10 @@ use App\Models\Product;
 class ProductController extends Controller
 {
     public function index()
-    {
-        $products = Product::all();
-        
-        return view('index', compact('products'));
+    {   
+        $products = Product::paginate(6);
+
+        return view('products.index', compact('products'));
     }
     
     //詳細・変更画面を表示
@@ -49,5 +49,10 @@ class ProductController extends Controller
         $product->seasons()->sync($request->season);
 
         return redirect('/products')->with('success', '商品情報を更新しました');
+    }
+
+    public function register()
+    {
+        return view('register');
     }
 }
