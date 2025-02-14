@@ -55,4 +55,14 @@ class ProductController extends Controller
     {
         return view('register');
     }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+
+        $products = Product::KeywordSearch($query)->paginate(6);
+
+        return view('search_result.index', compact('products'));
+
+    }
 }

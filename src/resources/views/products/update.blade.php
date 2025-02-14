@@ -19,7 +19,7 @@
       </div>
       
       <div class="product-detail">
-        <img src="{{ $product->image }}"  alt="{{ $product->name }}" class="product-image">
+        <img src="{{ asset('storage/' . $product->image) }}"  alt="{{ $product->name }}" class="product-image">
 
         <div class="product-info">
           <form action="{{ route('products.update', $product->id )}}" method="POST" enctype="multipart/form-data">
@@ -51,10 +51,10 @@
           <div class="product-form">
             <input type="file" id="image" name="image">
 
-          <div class="product-discription">
-            <div class="description-label">商品説明</div>
-            <textarea name="description" >{{ old('description', $product->description) }}</textarea>
-          </div>
+            <div class="product-description">
+              <div class="description-label">商品説明</div>
+              <textarea name="description" >{{ old('description', $product->description) }}</textarea>
+            </div>
 
           <div class="button-group">
             <a href="/products" class="button-back">戻る</a> <!--/productsに戻る -->
@@ -69,7 +69,6 @@
             
             <button class="delete-form__button--submit" type="submit">🗑️</button>
               <input type="hidden" name="id" value="{{ $product['id'] }}">
-              <button class="delete-form__button--submit" type="submit">ゴミ箱マーク</button>
             </button>
           </form>
         

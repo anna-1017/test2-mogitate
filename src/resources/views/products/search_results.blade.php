@@ -5,14 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>mogitate</title>
 
-    <link rel="stylesheet" href="{{ asset('css/index.css') }}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/search_results.css') }}">
+    
 </head>
 <body>
   <header class="header">mogitate</header>
+
   <main class="content">
+    
     <div class="sidebar">
-      <div class="sidebar-item">商品一覧</div>
+      <div class="sidebar-item">“{{ request('query') }}”の商品一覧</div>
       <div class="search-box" >
         <form action="{{ route('products.search') }}" method="GET">
           <input type="text"  name="query" placeholder="商品名で検索" value="{{ request('query') }}">
@@ -28,11 +30,7 @@
       </div>
     </div>
 
-
-    <div class="product-container">
-      <a href="{{ route('products.register') }}" class="add-product">＋商品を追加</a>
-      
-      <div class="product-list">
+    <div class="product-list">
         @foreach ($products as $product)
         <div class="product">
           <a href="{{ route('products.show', $product->id) }}">
@@ -46,10 +44,8 @@
         </div>
         @endforeach
       </div>
-      <div class="pagination">
-         {{ $products->links() }}
-      </div>
-    </div>   
+
+
+
+
   </main>
-</body>
-</html>
