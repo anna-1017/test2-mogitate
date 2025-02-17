@@ -48,10 +48,10 @@
       <label for="season">季節<span class="required">必須</span>
       <span class="optional">複数選択可</span></label>
       <div class="season-select">
-        <label><input class="checkbox" type="checkbox" name="season" value="spring">春</label>
-        <label><input class="checkbox" type="checkbox" name="season" value="summer">夏</label>
-        <label><input class="checkbox" type="checkbox" name="season" value="autumn">秋</label>
-        <label><input class="checkbox" type="checkbox" name="seasonr" value="winter">冬</label>
+        <label><input class="checkbox" type="checkbox" name="season[]" value="spring">春</label>
+        <label><input class="checkbox" type="checkbox" name="season[]" value="summer">夏</label>
+        <label><input class="checkbox" type="checkbox" name="season[]" value="autumn">秋</label>
+        <label><input class="checkbox" type="checkbox" name="seasonr[]" value="winter">冬</label>
       </div>
         @error('season')
           <div class="error-message">

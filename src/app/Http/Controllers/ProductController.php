@@ -16,30 +16,24 @@ class ProductController extends Controller
         return view('products.index', compact('products'));
     }
     
-    //詳細・変更画面を表示
     public function show($id)
     {
         $product = Product::findOrFail($id);
         return view('products.show', compact('product'));
     }
 
-     //詳細・変更画面を表示（update.blade.php）
     public function update($id)
     {
-        $product = Product::findOrFail($id);// ID に対応する商品を取得
+        $product = Product::findOrFail($id);
         return view('products.update', compact('product'));
     }
 
-    //商品情報を更新（PATCH）
     public function saveUpdate(ProductRequest $request, $id)
     {
-        die('ここまで来た');
-        dd('リクエストデータ:', $request->all());
 
         $product = Product::findOrFail($id);
 
 
-        //データを更新（※バリデーションはあとで）
         $product->name = $request->name;
         $product->price = $request->price;
         $product->description = $request->description;
@@ -51,7 +45,7 @@ class ProductController extends Controller
         }
 
         $product->save();
-        //$product->seasons()->sync($request->seasons); 以下に修正してみる
+       
         dd($request->seasons);
         $seasonIds = \App\Models\Season::whereIn('name', $request->seasons)->pluck('id')->toArray();
         dd($seasonIds);

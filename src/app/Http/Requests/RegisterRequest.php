@@ -28,7 +28,7 @@ class RegisterRequest extends FormRequest
             'price' => 'required|integer|between:0,10000',
             'season' => 'required|array',
             'description' => 'required|string|max:120',
-            'image' => 'required|mines:png,jpeg',
+            'image' => 'required|mimes:png,jpeg|max:2048',
         ];
     }
 
@@ -44,6 +44,6 @@ class RegisterRequest extends FormRequest
             'description.max' => '120文字以内で入力してください',
             'image.required' => '商品画像を登録してください',
             'image.mimes' => '「.png」または[.jpeg」形式でアップロードしてください',
-        ]
+        ];
     }
 }
