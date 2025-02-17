@@ -1,18 +1,11 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>mogitate</title>
+@extends('layouts.app')
 
+@section('css')
     <link rel="stylesheet" href="{{ asset('css/search_results.css') }}">
-    
-</head>
-<body>
-  <header class="header">mogitate</header>
+@endsection    
 
+@section('content')
   <main class="content">
-    
     <div class="sidebar">
       <div class="sidebar-item">“{{ request('query') }}”の商品一覧</div>
       <div class="search-box" >
@@ -44,8 +37,4 @@
         </div>
         @endforeach
       </div>
-
-
-
-
-  </main>
+@endsection

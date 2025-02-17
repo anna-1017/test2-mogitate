@@ -1,17 +1,10 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>mogitate</title>
+@extends('layouts.app')
 
+@section('css')
     <link rel="stylesheet" href="{{asset('css/update.css') }}">
-</head>
-<body>
-  <header class="header">mogitate</header>
-<!--この上はlayoutsへ -->
-  
+@endsection
 
+@section('content')
   <main class="content">
     <div class="detail-container">
       <div class="detail-header">
@@ -22,31 +15,47 @@
         <img src="{{ asset('storage/' . $product->image) }}"  alt="{{ $product->name }}" class="product-image">
 
         <div class="product-info">
-          <form action="{{ route('products.update', $product->id )}}" method="POST" enctype="multipart/form-data">
+          <form action="{{ route('products.update', ['id' => $product->id]) }}" method="POST" enctype="multipart/form-data">
           @csrf
           @method('PATCH')
 
           <div class="product-name">
             <div class="name-label">商品名</div>
             <input type="text" name="name" value="{{ old('name', $product->name) }}">
+              @error('name')
+                <div class="error-message">
+                  {{$errors->first('name')}}
+                </div>
+              @enderror
           </div>
         
           <div class="product-price">
             <div class="price-label">値段</div>
             <input type="text" name="price" value="{{ $product->price }}">
+              @error('price')
+                <div class="error-message">
+                  {{$errors->first('price')}}
+                </div>
+              @enderror
           </div>
         
           <div class="season">
             <div class="season-label">季節</div>
             <div class="season-select">
-                <input type="radio" name="season" value="spring" {{ old('season', $product->season) == 'spring' ? 'checked' : '' }}>春
-                <input type="radio" name="season" value="summer" {{ old('season', $product->season) == 'summer' ? 'checked' : '' }}>夏
-                <input type="radio" name="season" value="autumn" {{ old('season', $product->season) == 'autumn' ? 'checked' : '' }}>秋
-                <input type="radio" name="season" value="winter" {{ old('season', $product->season) == 'winter' ? 'checked' : '' }}>冬
+                <input type="checkbox" name="seasons[]" value="spring" {{ in_array('spring', old('seasons', $product->seasons->pluck('name')->toArray()) ?: []) ? 'checked' : '' }}> 春
+
+                <input type="checkbox" name="seasons[]" value="summer" {{ in_array('summer', old('seasons', $product->seasons->pluck('name')->toArray()) ?: []) ? 'checked' : '' }}>夏
+
+                <input type="checkbox" name="seasons[]" value="autumn" {{ in_array('autumn', old('seasons', $product->seasons->pluck('name')->toArray()) ?: []) ? 'checked' : '' }}>秋
+
+                <input type="checkbox" name="seasons[]" value="winter" {{ in_array('winter', old('seasons', $product->seasons->pluck('name')->toArray()) ?: []) ? 'checked' : '' }}>冬
             </div>
+              @error('season')
+                <div class="error-message">
+                  {{$errors->first('season')}}
+                </div>
+              @enderror
           </div>
-        </div>
-      
 
           <div class="product-form">
             <input type="file" id="image" name="image">
@@ -54,6 +63,11 @@
             <div class="product-description">
               <div class="description-label">商品説明</div>
               <textarea name="description" >{{ old('description', $product->description) }}</textarea>
+                @error('description')
+                <div class="error-message">
+                  {{$errors->first('description')}}
+                </div>
+              @enderror
             </div>
 
           <div class="button-group">
@@ -74,6 +88,4 @@
         
       </div>
     </div>
-  </main>   
-</body>
-</html>
+@endsection

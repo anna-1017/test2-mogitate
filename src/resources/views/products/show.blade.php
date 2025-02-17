@@ -1,14 +1,10 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>mogitate</title>
-    <link rel="stylesheet" href="{{ asset('css/show.css') }}">
-</head>
-<body>
-  <header class="header">mogitate</header>
+@extends('layouts.app')
 
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/show.css') }}">
+@endsection
+
+@section('content')
   <main class="content">
     <div class="detail-container">
       <div class="detail-header">
@@ -31,8 +27,10 @@
 
           <div class="season">
             <div class="season-label">季節</div>
-            <span>{{ $product->season }}</span> <!-- 直接表示 -->
-          </div>
+              @foreach($product->seasons as $season)
+                <span>{{ $season->name }}</span>
+              @endforeach
+            </div>
 
           <div class="product-description">
             <div class="description-label">商品説明</div>
@@ -40,10 +38,8 @@
           </div>
         </div>
 
-        <!-- 編集ボタン -->
+
         <a href="{{ route('products.edit', $product->id) }}" class="button-edit">編集</a>
       </div>
     </div>
-  </main>
-</body>
-</html>
+@endsection

@@ -20,6 +20,10 @@ Route::get('/products', [ProductController::class, 'index']);
 
 Route::get('/products/register', [ProductController::class, 'register'])->name('products.register');
 
+Route::post('/products/register', [ProductController::class, 'store'])->name('products.store');
+
+Route::get('/products/search',  [ProductController::class, 'search'])->name('products.search');
+
 //商品詳細（表示用）
 Route::get('/products/{id}/', [ProductController::class, 'show'])->name('products.show');
 
@@ -29,6 +33,6 @@ Route::get('/products/{id}/update', [ProductController::class, 'update'])->name(
 // 商品更新処理（データベース更新用）
 Route::patch('/products/{id}/update', [ProductController::class, 'saveUpdate'])->name('products.update');
 
-Route::get('/products/search',  [ProductController::class, 'search'])->name('products.search');
+
 
 Route::delete('/products/{id}/delete', [ProductController::class, 'destroy'])->name('products.delete');
